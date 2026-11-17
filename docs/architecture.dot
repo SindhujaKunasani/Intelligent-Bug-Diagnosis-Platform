@@ -1,0 +1,24 @@
+digraph G {
+ graph [rankdir=TB, bgcolor="white", pad="0.3", nodesep="0.45", ranksep="0.65", fontname="Arial", label="Intelligent Bug Diagnosis Platform — Proposed Architecture", labelloc=t, fontsize=20];
+ node [shape=box,style="rounded,filled",fontname="Arial",fontsize=11,fillcolor="#eef4ff",color="#5677ba",margin="0.19,0.12"];
+ edge [color="#64748b", arrowsize=0.7];
+ ui [label="Bug Submission / Results UI\nPaste text · Upload files · View matches"];
+ api [label="FastAPI Backend\nValidation · Upload parsing · REST API"];
+ sql [label="SQLite Submissions\nBug reports & metadata",fillcolor="#e8f6ee",color="#54a077"];
+ processor [label="Bug Processing\nClean · Normalize · Extract sections"];
+ kb [label="Mozilla / Apache / Eclipse\nHistorical Public Datasets",fillcolor="#fff4df",color="#c89b4e"];
+ chunk [label="ETL + Chunking\nDescription · Trace · Comments · Resolution"];
+ embeds [label="Sentence Transformer\nEmbedding generation"];
+ chroma [label="ChromaDB\nPersistent vector index",fillcolor="#e8f6ee",color="#54a077"];
+ retrieve [label="RAG Retriever\nSemantic similarity + evidence metadata"];
+ orchestrator [label="Agent Orchestrator [FUTURE]\nFive-agent workflow",style="rounded,dashed,filled",fillcolor="#f4ebfa",color="#8c65aa"];
+ agents [label="Triage · Log Analysis · Root Cause\nDuplicate Detection · Remediation [FUTURE]",style="rounded,dashed,filled",fillcolor="#f4ebfa",color="#8c65aa"];
+ llm [label="Local LLM / Ollama [FUTURE]",style="rounded,dashed,filled",fillcolor="#f4ebfa",color="#8c65aa"];
+ findings [label="Structured Findings + Recommendations [FUTURE]",style="rounded,dashed,filled",fillcolor="#f4ebfa",color="#8c65aa"];
+ update [label="Reviewed KB Update [FUTURE]",style="rounded,dashed,filled",fillcolor="#f4ebfa",color="#8c65aa"];
+ ui -> api; api -> sql; api -> processor; processor -> retrieve;
+ kb -> chunk -> embeds -> chroma -> retrieve;
+ retrieve -> orchestrator -> agents -> findings -> ui;
+ llm -> agents; findings -> update -> chunk;
+ {rank=same; sql;processor}
+}

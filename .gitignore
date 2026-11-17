@@ -1,0 +1,51 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+.env
+.DS_Store
+data/*.sqlite3
+data/chroma/
+data/uploads/
+data/private/
+
+# Python virtual environment
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+.env.*
+
+# Databases and generated files
+*.db
+*.sqlite
+*.sqlite3
+chroma_db/
+chroma_store/
+chroma_data/
+chroma/
+data/chroma/
+data/chroma_db/
+data/uploads/
+uploads/
+
+# Large datasets
+data/historical/*.csv
+data/historical/*.zip
+data/historical/*.json
+
+# Model files
+*.safetensors
+*.bin
+models/
+
+# IDE files
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
